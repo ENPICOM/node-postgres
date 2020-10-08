@@ -490,7 +490,8 @@ class Client extends EventEmitter {
     var result
     var readTimeout
     var readTimeoutTimer
-    var queryCallback
+    // This is undefined in some cases, setting it to empty is what the library itself does in most of these cases
+    var queryCallback = () => {}
 
     if (config === null || config === undefined) {
       throw new TypeError('Client was passed a null or undefined query')
